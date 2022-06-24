@@ -1,4 +1,4 @@
-resource "Jupiter_Volume" "testvolume1" {
+resource "Jupiter_Volume" "jupiter_Jupiter_Volume" {
   volume_lookup_key = ""
   items{
     volume{
