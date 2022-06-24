@@ -101,7 +101,7 @@ func resourceVolume() *schema.Resource {
 }
 
 func resourceVolumeCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*AuthStruct)
+	c := m.(*apiClient)
 	var diags diag.Diagnostics
 	jupiter_url := c.jupiter_url
 	auth_token := c.authToken
@@ -174,7 +174,7 @@ func resourceVolumeRead(ctx context.Context, d *schema.ResourceData, m interface
 	// 		log.Printf(err.(string))
 	// 	}
 	// }()
-	c := m.(*AuthStruct)
+	c := m.(*apiClient)
 	var diags diag.Diagnostics
 	jupiter_url := c.jupiter_url
 	auth_token := c.authToken
@@ -223,7 +223,7 @@ func resourceVolumeRead(ctx context.Context, d *schema.ResourceData, m interface
 }
 
 func resourceVolumeUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*AuthStruct)
+	c := m.(*apiClient)
 	var diags diag.Diagnostics
 	jupiter_url := c.jupiter_url
 	auth_token := c.authToken
@@ -254,7 +254,7 @@ func resourceVolumeUpdate(ctx context.Context, d *schema.ResourceData, m interfa
 }
 
 func resourceVolumeDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*AuthStruct)
+	c := m.(*apiClient)
 	var diags diag.Diagnostics
 	jupiter_url := c.jupiter_url
 	auth_token := c.authToken

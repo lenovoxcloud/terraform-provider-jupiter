@@ -113,7 +113,7 @@ func resourceVM() *schema.Resource {
 }
 
 func resourceVMCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*AuthStruct)
+	c := m.(*apiClient)
 	var diags diag.Diagnostics
 	jupiter_url := c.jupiter_url
 	auth_token := c.authToken
@@ -185,7 +185,7 @@ func resourceVMRead(ctx context.Context, d *schema.ResourceData, m interface{}) 
 	// 		log.Printf(err.(string))
 	// 	}
 	// }()
-	c := m.(*AuthStruct)
+	c := m.(*apiClient)
 	var diags diag.Diagnostics
 	jupiter_url := c.jupiter_url
 	auth_token := c.authToken
@@ -244,7 +244,7 @@ func resourceVMRead(ctx context.Context, d *schema.ResourceData, m interface{}) 
 }
 
 func resourceVMUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*AuthStruct)
+	c := m.(*apiClient)
 	var diags diag.Diagnostics
 	jupiter_url := c.jupiter_url
 	auth_token := c.authToken
@@ -317,7 +317,7 @@ func resourceVMUpdate(ctx context.Context, d *schema.ResourceData, m interface{}
 }
 
 func resourceVMDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*AuthStruct)
+	c := m.(*apiClient)
 	var diags diag.Diagnostics
 	jupiter_url := c.jupiter_url
 	auth_token := c.authToken

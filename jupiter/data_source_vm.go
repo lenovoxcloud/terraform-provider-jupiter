@@ -88,7 +88,7 @@ func dataSourceVM() *schema.Resource {
 }
 
 func dataSourceVMRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*AuthStruct)
+	c := m.(*apiClient)
 	var diags diag.Diagnostics
 	jupiter_url := c.jupiter_url
 	jupiter_route := "/jupiter/api/v1/delivery/"

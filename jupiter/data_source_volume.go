@@ -74,7 +74,7 @@ func dataSourceVolume() *schema.Resource {
 }
 
 func dataSourceVolumeRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*AuthStruct)
+	c := m.(*apiClient)
 	var diags diag.Diagnostics
 	jupiter_url := c.jupiter_url
 	auth_token := c.authToken

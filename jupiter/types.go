@@ -95,11 +95,11 @@ type PlatformInfo struct {
 
 //subnet
 type SubnetApplicationData struct {
-	Code       string     `json:"code"`
-	Message    string     `json:"message"`
-	Success    bool       `json:"success"`
-	Timestamp  int        `json:"timestamp"`
-	SubnetData SubnetData `json:"data"`
+	Code      string  `json:"code"`
+	Message   string  `json:"message"`
+	Success   bool    `json:"success"`
+	Timestamp int     `json:"timestamp"`
+	SubnetData   SubnetData `json:"data"`
 }
 
 type SubnetData struct {
@@ -107,72 +107,77 @@ type SubnetData struct {
 }
 
 type Subnetform struct {
-	Subnettype   string       `json:"type"`
+	Subnettype      string       `json:"type"`
 	Owner        []string     `json:"owner"`
 	VpcName      string       `json:"vpc_name"`
 	Description  string       `json:"description"`
 	PlatformInfo PlatformInfo `json:"platform_info"`
 }
+
 
 //outnet
-type VPCApplicationData struct {
+type OutnetApplicationData struct {
 	Code      string  `json:"code"`
 	Message   string  `json:"message"`
 	Success   bool    `json:"success"`
 	Timestamp int     `json:"timestamp"`
-	VPCData   VPCData `json:"data"`
+	OutnetData   OutnetData `json:"data"`
 }
 
-type VPCData struct {
-	VPCform VPCform `json:"form"`
+type OutnetData struct {
+	Outnetform Outnetform `json:"form"`
 }
 
-type VPCform struct {
+type Outnetform struct {
 	Vpctype      string       `json:"type"`
 	Owner        []string     `json:"owner"`
-	VpcName      string       `json:"vpc_name"`
+	Name      string       `json:"vpc_name"`
 	Description  string       `json:"description"`
 	PlatformInfo PlatformInfo `json:"platform_info"`
 }
+
 
 //dns
-type VPCApplicationData struct {
+type DNSApplicationData struct {
 	Code      string  `json:"code"`
 	Message   string  `json:"message"`
 	Success   bool    `json:"success"`
 	Timestamp int     `json:"timestamp"`
-	VPCData   VPCData `json:"data"`
+	DNSData   DNSData `json:"data"`
 }
 
-type VPCData struct {
-	VPCform VPCform `json:"form"`
+type DNSData struct {
+	DNSform DNSform `json:"form"`
 }
 
-type VPCform struct {
+type DNSform struct {
 	Vpctype      string       `json:"type"`
 	Owner        []string     `json:"owner"`
-	VpcName      string       `json:"vpc_name"`
+	Name      string       `json:"vpc_name"`
 	Description  string       `json:"description"`
 	PlatformInfo PlatformInfo `json:"platform_info"`
 }
+
+
 
 //vpn
-type VPCApplicationData struct {
+type VPNApplicationData struct {
 	Code      string  `json:"code"`
 	Message   string  `json:"message"`
 	Success   bool    `json:"success"`
 	Timestamp int     `json:"timestamp"`
-	VPCData   VPCData `json:"data"`
+	VPNData   VPNData `json:"data"`
 }
 
-type VPCData struct {
-	VPCform VPCform `json:"form"`
+type VPNData struct {
+	VPNform VPNform `json:"form"`
 }
 
-type VPCform struct {
+type VPNform struct {
 	Vpctype      string       `json:"type"`
 	Owner        []string     `json:"owner"`
-	VpcName      string       `json:"vpc_name"`
+	VpnName      string       `json:"vpc_name"`
 	Description  string       `json:"description"`
 	PlatformInfo PlatformInfo `json:"platform_info"`
 }
+

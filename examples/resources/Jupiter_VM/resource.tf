@@ -1,4 +1,4 @@
-resource "Jupiter_VM" "testvm2" {
+resource "Jupiter_VM" "jupiter_Jupiter_VM" {
   vm_lookup_key = "b1e168eb-e34a-46b7-b823-32eadb907201"
   items{
     vm{
@@ -10,7 +10,7 @@ resource "Jupiter_VM" "testvm2" {
       vpc_id = "d16dba99-86fd-445f-a459-4fe9d21b71ab"
       network_id = "f39503e9-42a4-478e-bd48-e3793e9637d2"
       password_type = "input"
-      password = "iE2)iS1&yC"
+      password = "P@ssWord"
       power_state = "shutoff"
       
     }

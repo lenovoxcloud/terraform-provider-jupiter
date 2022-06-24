@@ -1,3 +1,3 @@
-data "scaffolding_data_source" "example" {
+data "Jupiter_VM" "jupiter_Jupiter_Volume" {
   sample_attribute = "foo"
 }
