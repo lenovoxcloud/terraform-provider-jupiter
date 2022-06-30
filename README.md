@@ -1,64 +1,105 @@
-# Terraform Provider Scaffolding (Terraform Plugin SDK)
+# Terraform Provider for Lenovo Xcloud Jupiter a
 
-_This template repository is built on the [Terraform Plugin SDK](https://github.com/hashicorp/terraform-plugin-sdk). The template repository built on the [Terraform Plugin Framework](https://github.com/hashicorp/terraform-plugin-framework) can be found at [terraform-provider-scaffolding-framework](https://github.com/hashicorp/terraform-provider-scaffolding-framework). See [Which SDK Should I Use?](https://www.terraform.io/docs/plugin/which-sdk.html) in the Terraform documentation for additional information._
+The Terraform Jupiter provider is a plugin for Terraform that allows for the management of Lenovo Xcloud Jupiter resources.
+This provider is maintained internally by the Lenovo Xcloud Jupiter Provider team.
 
-This repository is a *template* for a [Terraform](https://www.terraform.io) provider. It is intended as a starting point for creating Terraform providers, containing:
+Please note: We take Terraform's security and our users' trust very seriously. If you believe you have found a security issue in the Terraform Jupiter provider, please responsibly disclose by contacting us at yuhan2@lenovo.com,Thanks
 
- - A resource, and a data source (`internal/provider/`),
- - Examples (`examples/`) and generated documentation (`docs/`),
- - Miscellaneous meta files.
- 
-These files contain boilerplate code that you will need to edit to create your own Terraform provider. Tutorials for creating Terraform providers can be found on the [HashiCorp Learn](https://learn.hashicorp.com/collections/terraform/providers) platform.
+Terraform Jupiter provider是一个用于管理Lenovo Xcloud Jupiter资源的Terraform插件。
 
-Please see the [GitHub template repository documentation](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) for how to create a new repository from this template on GitHub.
+该Terraform provider由Lenovo Xcloud Jupiter provider团队进行内部维护。
 
-Once you've written your provider, you'll want to [publish it on the Terraform Registry](https://www.terraform.io/docs/registry/providers/publishing.html) so that others can use it.
+请注意:我们非常重视Terraform的安全和用户的信任。如果您认为您在Terraform Jupiter provider中发现了安全问题，请通过联系我们(yuhan2@lenovo.com)负责任地披露,十分感谢。
 
+## Quick Starts
 
-## Requirements
+here are some TF code to create an jupiter vm and a jupiter volume on your localhost jupiter:
+下面是一些TF代码，可以在你本地运行的jupiter上创建一个jupiter vm和一个jupiter volume:
+```terraform
+terraform {
+  required_providers {
+    jupiter = {
+      source = "lenovoxcloud/jupiter"
+      version = "1.0.5"
+    }
+  }
+}
 
--	[Terraform](https://www.terraform.io/downloads.html) >= 0.13.x
--	[Go](https://golang.org/doc/install) >= 1.17
+provider "jupiter" {
+    jupiter_url = "http://127.0.0.1:8000"  // 要访问的Jupiter的地址
+    auth_token = "your auth token"         // 要访问的Jupiter的authToken
+}
 
-## Building The Provider
+resource "Jupiter_VM" "testvm1" {
+  vm_lookup_key = ""
+  items{
+    vm{
+      instance_name = "tftest1"
+      project_global_id = "73e44e46daa5438ead682c7ebd0f9f77"
+      cloud_name = "DEV-O1"
+      flavor_id = "3e01e507-c0fb-4198-a207-9863843d5b17"
+      image_id = "940a8133-903b-4a06-b533-e8beec3e7d2c"
+      vpc_id = "d16dba99-86fd-445f-a459-4fe9d21b71ab"
+      network_id = "f39503e9-42a4-478e-bd48-e3793e9637d2"
+      password_type = "input"
+      password = "iE2)iS1&yC"
+      power_state = "active"
+      
+    }
+    quantity = 1
+  }
+}
 
-1. Clone the repository
-1. Enter the repository directory
-1. Build the provider using the Go `install` command: 
-```sh
-$ go install
-```
+resource "Jupiter_Volume" "testvolume1" {
+  volume_lookup_key = ""
+  items{
+    volume{
+      name = "tfvolume1"
+      project_global_id = "73e44e46daa5438ead682c7ebd0f9f77"
+      cloud_name = "DEV-O1"
+      volume_feature = "blank"
+      is_thin_provisioning = "true
+      size = "1"
+      user = "yuhan2@lenovo.com"
+      volume_type = "56015969-8916-4e6b-8049-3a8955509910"
+    }
+    quantity = 1
+  }
+}
 
-## Adding Dependencies
+``` 
 
-This provider uses [Go modules](https://github.com/golang/go/wiki/Modules).
-Please see the Go documentation for the most up to date information about using Go modules.
+# 字段解释 fields
 
-To add a new dependency `github.com/author/dependency` to your Terraform provider:
+|字段名 Field|含义|explain|
+|-----|----|----|
+|jupiter_url|你想通过tf管理的Jupiter的地址|Jupiter's address that you want to administer via TF|
+|auth_token|访问jupiter的auth_token|Access Jupiter's auth_token|
 
-```
-go get github.com/author/dependency
-go mod tidy
-```
+|字段名 Field|含义|explain|
+|-----|----|----|
+|instance_name|要创建的云主机的名称|Jupiter VM's name |
+|project_global_id|云主机所属的project_global_id|Project_global_id To which the VM belongs|
+|cloud_name|云主机所属的云环境名称|Cloud Name which the VM belongs|
+|flavor_id|云主机使用的规格的id|VM's flavor uuid|
+|image_id|云主机使用的镜像的id|VM's image uuid|
+|vpc_id|云主机使用的vpcid|VM's VPC uuid|
+|network_id|云主机使用的云网络的id|VM's network id|
+|password_type|云主机的密码类型|VM's password type|
+|password|云主机的密码值|VM's password|
+|power_state|云主机的开机状态|VM's power status|
 
-Then commit the changes to `go.mod` and `go.sum`.
+|字段名 Field|含义|explain|
+|-----|----|----|
+|name|要创建的云硬盘的名称|Jupiter volume's name |
+|project_global_id|云硬盘所属的project_global_id|Project_global_id To which the volume belongs|
+|cloud_name|云硬盘所属的云环境名称|Cloud Name which the volume belongs|
+|volume_feature|云硬盘使来源|volume's feature|
+|is_thin_provisioning|是否精简置备|is this a thin provisioning volume|
+|size|云硬盘大小|volume size|
+|user|创建的用户|who create the volume|
+|volume_type|云硬盘类型|volume type|
 
-## Using the provider
+--------
 
-Fill this in for each provider
-
-## Developing the Provider
-
-If you wish to work on the provider, you'll first need [Go](http://www.golang.org) installed on your machine (see [Requirements](#requirements) above).
-
-To compile the provider, run `go install`. This will build the provider and put the provider binary in the `$GOPATH/bin` directory.
-
-To generate or update documentation, run `go generate`.
-
-In order to run the full suite of Acceptance tests, run `make testacc`.
-
-*Note:* Acceptance tests create real resources, and often cost money to run.
-
-```sh
-$ make testacc
-```
+Have any other questions,submit a issue or mailing yuhan2@lenovo.com
