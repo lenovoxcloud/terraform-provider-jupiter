@@ -95,11 +95,11 @@ type PlatformInfo struct {
 
 //subnet
 type SubnetApplicationData struct {
-	Code      string  `json:"code"`
-	Message   string  `json:"message"`
-	Success   bool    `json:"success"`
-	Timestamp int     `json:"timestamp"`
-	SubnetData   SubnetData `json:"data"`
+	Code       string     `json:"code"`
+	Message    string     `json:"message"`
+	Success    bool       `json:"success"`
+	Timestamp  int        `json:"timestamp"`
+	SubnetData SubnetData `json:"data"`
 }
 
 type SubnetData struct {
@@ -107,21 +107,20 @@ type SubnetData struct {
 }
 
 type Subnetform struct {
-	Subnettype      string       `json:"type"`
+	Subnettype   string       `json:"type"`
 	Owner        []string     `json:"owner"`
 	VpcName      string       `json:"vpc_name"`
 	Description  string       `json:"description"`
 	PlatformInfo PlatformInfo `json:"platform_info"`
 }
 
-
 //outnet
 type OutnetApplicationData struct {
-	Code      string  `json:"code"`
-	Message   string  `json:"message"`
-	Success   bool    `json:"success"`
-	Timestamp int     `json:"timestamp"`
-	OutnetData   OutnetData `json:"data"`
+	Code       string     `json:"code"`
+	Message    string     `json:"message"`
+	Success    bool       `json:"success"`
+	Timestamp  int        `json:"timestamp"`
+	OutnetData OutnetData `json:"data"`
 }
 
 type OutnetData struct {
@@ -131,11 +130,10 @@ type OutnetData struct {
 type Outnetform struct {
 	Vpctype      string       `json:"type"`
 	Owner        []string     `json:"owner"`
-	Name      string       `json:"vpc_name"`
+	Name         string       `json:"vpc_name"`
 	Description  string       `json:"description"`
 	PlatformInfo PlatformInfo `json:"platform_info"`
 }
-
 
 //dns
 type DNSApplicationData struct {
@@ -153,12 +151,10 @@ type DNSData struct {
 type DNSform struct {
 	Vpctype      string       `json:"type"`
 	Owner        []string     `json:"owner"`
-	Name      string       `json:"vpc_name"`
+	Name         string       `json:"vpc_name"`
 	Description  string       `json:"description"`
 	PlatformInfo PlatformInfo `json:"platform_info"`
 }
-
-
 
 //vpn
 type VPNApplicationData struct {
@@ -180,4 +176,3 @@ type VPNform struct {
 	Description  string       `json:"description"`
 	PlatformInfo PlatformInfo `json:"platform_info"`
 }
-

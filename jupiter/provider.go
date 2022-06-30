@@ -41,10 +41,14 @@ func New(version string) func() *schema.Provider {
 			DataSourcesMap: map[string]*schema.Resource{
 				"Jupiter_VM":     dataSourceVM(),
 				"Jupiter_Volume": dataSourceVolume(),
+				"Jupiter_VPC":    dataSourceVPC(),
+				"Jupiter_Subnet": dataSourceSubnet(),
 			},
 			ResourcesMap: map[string]*schema.Resource{
 				"Jupiter_VM":     resourceVM(),
 				"Jupiter_Volume": resourceVolume(),
+				"Jupiter_VPC":    resourceVPC(),
+				"Jupiter_Subnet": resourceSubnet(),
 			},
 			ConfigureContextFunc: providerConfigure,
 		}
